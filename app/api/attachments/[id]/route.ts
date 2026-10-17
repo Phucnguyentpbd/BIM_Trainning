@@ -1,0 +1,5 @@
+import {env} from 'cloudflare:workers';
+import {authorized,run,json,HttpError} from '../../../../lib/api';
+type Context={params:Promise<{id:string}>};
+export const GET=(req:Request,ctx:Context)=>run(async()=>{const {user,db}=await authorized(req);const {id}=await ctx.params;const a=await db.prepare('SELECT mime FROM attachments WHERE id=? AND user_id=? AND deleted_at IS NULL').bind(id,user.userId).first<{mime:string}>();if(!a||!env.BUCKET)throw new HttpError(404,'Không tìm thấy ảnh.');const file=await env.BUCKET.get('attachments/'+user.userId+'/'+id);if(!file)throw new HttpError(404,'Không tìm thấy ảnh.');return new Response(file.body,{headers:{'Content-Type':a.mime,'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'}});});
+export const DELETE=(req:Request,ctx:Context)=>run(async()=>{const {user,db}=await authorized(req);const {id}=await ctx.params;await db.prepare('UPDATE attachments SET deleted_at=? WHERE id=? AND user_id=?').bind(new Date().toISOString(),id,user.userId).run();return json({deleted:true});});

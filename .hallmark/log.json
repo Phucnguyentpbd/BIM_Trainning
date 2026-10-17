@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "intent": "A dense, technical BIM infrastructure handbook for daily use beside Autodesk and QGIS, with cloud notes and source-backed retrieval.",
+  "direction": "Dark CAD workbench with restrained sky-blue focus, compact typography, clear verification states, and no marketing hero treatment.",
+  "constraints": [
+    "Preserve the 24 chapter and 80 lesson curriculum",
+    "Keep official commands in English with Vietnamese explanation",
+    "Show documented versus real-model verification status",
+    "Maintain keyboard focus, reduced motion, and usable responsive layouts"
+  ],
+  "updated": "2026-10-17"
+}

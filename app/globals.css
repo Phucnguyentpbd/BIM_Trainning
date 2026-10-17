@@ -1,0 +1,203 @@
+/* Hallmark direction: dark CAD workbench · compact technical hierarchy · restrained cyan focus */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+@import "../tokens.css";
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+@utility scrollbar-gutter-stable {
+  scrollbar-gutter: stable;
+}
+
+:root {
+  color-scheme: dark;
+  --background: var(--bim-canvas);
+  --foreground: var(--bim-ink);
+  --card: var(--bim-panel);
+  --card-foreground: var(--bim-ink);
+  --popover: var(--bim-panel-raised);
+  --popover-foreground: var(--bim-ink);
+  --primary: var(--bim-sky);
+  --primary-foreground: var(--bim-canvas);
+  --secondary: var(--bim-panel-raised);
+  --secondary-foreground: var(--bim-ink);
+  --muted: var(--bim-panel-raised);
+  --muted-foreground: var(--bim-muted);
+  --accent: var(--bim-panel-raised);
+  --accent-foreground: var(--bim-ink);
+  --destructive: var(--bim-red);
+  --border: var(--bim-line);
+  --input: var(--bim-line);
+  --ring: var(--bim-sky);
+  --radius: var(--bim-radius);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: "Segoe UI", Inter, Arial, sans-serif;
+  --font-mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: var(--bim-canvas);
+  color: var(--bim-ink);
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+}
+
+body { overflow: hidden; }
+
+button,
+input,
+textarea,
+select,
+a { -webkit-tap-highlight-color: transparent; }
+
+:focus-visible {
+  outline: 2px solid var(--bim-sky);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: oklch(0.68 0.16 225 / 0.36);
+  color: white;
+}
+
+.instruction-figure {
+  margin: 0 0 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--bim-line);
+  border-radius: var(--bim-radius);
+  background: linear-gradient(135deg, oklch(0.19 0.025 248 / 0.96), oklch(0.14 0.018 248 / 0.98));
+  box-shadow: inset 0 1px oklch(0.8 0.08 225 / 0.05);
+  padding: 0.75rem;
+}
+
+.instruction-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--bim-sky);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+}
+
+.instruction-figure figcaption {
+  margin-top: 0.55rem;
+  color: var(--bim-muted);
+  font-size: 0.7rem;
+}
+
+.instruction-figure figcaption span {
+  margin-right: 0.35rem;
+  color: var(--bim-sky);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.diagram-lines { fill: none; stroke: var(--bim-sky); stroke-width: 1.5; }
+.diagram-node { fill: oklch(0.21 0.026 248); stroke: var(--bim-sky); stroke-width: 1.25; }
+.diagram-muted { fill: var(--bim-muted); font-size: 11px; }
+.diagram-earth { fill: oklch(0.24 0.045 76); stroke: oklch(0.57 0.09 76); }
+.diagram-fill { fill: oklch(0.33 0.06 76); stroke: var(--bim-amber); }
+.diagram-layer { fill: oklch(0.52 0.12 225 / 0.24); stroke: var(--bim-sky); }
+.diagram-base { fill: oklch(0.52 0.12 158 / 0.23); stroke: var(--bim-green); }
+.diagram-point { fill: var(--bim-red); }
+.diagram-road { fill: none; stroke: var(--bim-amber); stroke-width: 2.5; }
+
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { border-radius: 8px; background: oklch(0.34 0.03 248); }
+::-webkit-scrollbar-thumb:hover { background: var(--bim-sky); }
+
+.cad-glow { box-shadow: 0 0 20px oklch(0.72 0.14 225 / 0.14); }
+
+@media (max-width: 1280px) {
+  .assistant-panel { width: 21rem; }
+  .lesson-sidebar { width: 17.5rem; }
+}
+
+@media (max-width: 1050px) {
+  .assistant-panel {
+    position: fixed;
+    z-index: 40;
+    top: 3.5rem;
+    right: 0;
+    bottom: 0;
+    width: min(25rem, 92vw);
+    box-shadow: var(--bim-shadow);
+  }
+
+  .header-search { max-width: 20rem; }
+}
+
+@media (max-width: 760px) {
+  body { overflow: auto; }
+  .app-shell { min-height: 100dvh; height: auto; overflow: visible; }
+  .app-header { position: sticky; top: 0; gap: 0.5rem; padding: 0.55rem 0.75rem; }
+  .app-header > div:first-child > div:last-child > div:last-child { display: none; }
+  .header-search,
+  .cloud-pill { display: none; }
+  .workspace-grid { flex-direction: column; overflow: visible; }
+  .lesson-sidebar {
+    width: 100%;
+    height: 19rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--bim-line);
+  }
+  .workspace-grid > main { min-height: 72rem; overflow: visible; }
+  .workspace-grid > main > div { overflow: visible; padding: 1rem; }
+  .assistant-panel { top: 3.65rem; width: min(25rem, 100vw); }
+}
+
+@media (max-width: 480px) {
+  .app-header button span { display: none; }
+  .app-header button { padding-inline: 0.55rem; }
+  .lesson-sidebar { height: 17rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

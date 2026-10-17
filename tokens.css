@@ -1,0 +1,14 @@
+:root {
+  --bim-ink: oklch(0.97 0.008 244);
+  --bim-muted: oklch(0.72 0.025 244);
+  --bim-canvas: oklch(0.15 0.018 248);
+  --bim-panel: oklch(0.19 0.022 248);
+  --bim-panel-raised: oklch(0.23 0.026 248);
+  --bim-line: oklch(0.34 0.03 248);
+  --bim-sky: oklch(0.78 0.14 225);
+  --bim-green: oklch(0.76 0.16 158);
+  --bim-amber: oklch(0.79 0.15 76);
+  --bim-red: oklch(0.7 0.18 28);
+  --bim-radius: 0.5rem;
+  --bim-shadow: 0 18px 48px oklch(0.05 0.02 248 / 0.42);
+}
